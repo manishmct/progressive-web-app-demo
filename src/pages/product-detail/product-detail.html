@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Product Details
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page2" *ngIf="!displayItem && online">
+  <div>
+    <img src="assets/img/not_found.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
+  </div>
+  <h3>
+    Product Not Found!!
+  </h3>
+</ion-content>
+<ion-content padding id="page2" *ngIf="!displayItem && !online">
+  <div>
+    <img src="assets/img/Pagenotfound.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
+  </div>
+  <h3>
+    No Connection. Please turn on network to search for product.
+  </h3>
+</ion-content>
+<ion-content padding id="page2" *ngIf="displayItem">
+  <h2 id="productDetail-heading1" style="color:#000000;text-align:center;">
+    {{displayItem.itemName}}
+  </h2>
+  <div>
+    <img [src]="displayItem.itemImageUrl" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
+  </div>
+  <h3 id="productDetail-heading2" style="color:#000000;">
+    {{displayItem.itemPrice | currency : 'EUR' : 'symbol'}} online price
+  </h3>
+  <h2 id="productDetail-heading3" style="color:#000000;">
+    Description
+  </h2>
+  <p>
+    {{displayItem.itemDescription}}
+  </p>
+  <h2 id="productDetail-heading3" style="color:#000000;">
+    Specifications
+  </h2>
+  <div id="productDetail-markdown3" class="show-list-numbers-and-dots">
+    <p style="color:#000000;" *ngIf = "displayItem.itemSpec.alcohol">Alcohol Percentage : {{displayItem.itemSpec.alcohol}}%</p>
+    <p style="color:#000000;" *ngIf = "displayItem.itemSpec.grapeType">Grape Type : {{displayItem.itemSpec.grapeType}}</p>
+    <p style="color:#000000;" *ngIf = "displayItem.itemSpec.color">Wine Color : {{displayItem.itemSpec.color}}</p>
+    <p style="color:#000000;" *ngIf = "displayItem.itemSpec.size">Size : {{displayItem.itemSpec.size}}</p>
+    <p style="color:#000000;" *ngIf = "displayItem.itemSpec.quantity">Quantity : {{displayItem.itemSpec.quantity}}</p>
+    <p style="color:#000000;" *ngIf = "displayItem.itemSpec.ingredients">Ingredients : {{displayItem.itemSpec.ingredients}}</p>
+    <p style="color:#000000;" *ngIf = "displayItem.itemSpec.storage">Storage Instructions : {{displayItem.itemSpec.storage}}</p>
+    <p style="color:#000000;" *ngIf = "displayItem.itemSpec.manufacturer">Manufacturer : {{displayItem.itemSpec.manufacturer}}</p>
+    <!--<p style="color:#000000;" *ngIf = "displayItem.itemSpec."></p>-->
+    <!--<p style="color:#000000;" *ngIf = "displayItem.itemSpec."></p>-->
+  </div>
+  <div id="productDetail-container1"></div>
+</ion-content>
